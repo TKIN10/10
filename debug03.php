@@ -112,11 +112,12 @@ class Battle
         }
     }
 
-    private function countVictories()
+    public function countVictories()
     {
         if ($this->judge() === '勝ち') {
-            $_SESSION['result'] = 1;
+          $_SESSION['result'] += + 1 ;
         }
+        return $_SESSION['result'];
     }
 
     public function getVitories()
@@ -144,28 +145,3 @@ if (! empty($_POST)) {
         echo $battle->countVictories().'回目の勝利です。';
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>デバック練習</title>
-</head>
-<body>
-    <section>
-    <form action='./debug03.php' method="POST">
-        <label>姓</label>
-        <input type="text" name="last_name" value="<?php echo '山田' ?>" />
-        <label>名</label>
-        <input type="text" name="first_name" value="<?php echo '太郎' ?>" />
-        <select name='choice'>
-            <option value=0 >--</option>
-            <option value=1 >グー</option>
-            <option value=2 >チョキ</option>
-            <option value=3 >パー</option>
-        </select>
-        <input type="submit" value="送信する"/>
-    </form>
-    </section>
-</body>
-</html>
