@@ -25,7 +25,7 @@ echo '私の名前は'.$lastName.$firstName.'です。';
 </head>
 <body>
     <section>
-    <form action='./debug.php' method="POST">
+    <form action='./lesson1.php' method="POST">
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>
