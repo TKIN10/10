@@ -11,7 +11,7 @@
 session_start();
 
 if (! empty($_SESSION['result'])) {
-    $_SESSION['result'] += 1 ;
+    // $_SESSION['result'] += +1 ;
 }
 
 class Player
@@ -115,7 +115,7 @@ class Battle
     public function countVictories()
     {
         if ($this->judge() === '勝ち') {
-          $_SESSION['result'] += + 1 ;
+          $_SESSION['result'] += 1 ;
         }
         return $_SESSION['result'];
     }

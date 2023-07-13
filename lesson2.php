@@ -15,12 +15,17 @@ $createAgeGroup = function () {
 
 class SelfIntroduction
 {
-    private string $lastName;
-    private string $firstName;
-    private int $age;
-    private string $hobby;
+    private $lastName;
+    private $firstName;
+    private $age;
+    private $hobby;
 
-    public function __construct($lastName,$firstName,$age,$hobby){
+    public function __construct(
+        string $lastName,
+        string $firstName,
+        int $age,
+        string $hobby
+    ){
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
         $this->age          = $age;
@@ -43,17 +48,17 @@ class SelfIntroduction
     }
 }
 
-$selfIntroduction = new SelfIntroduction($lastName = $_POST['last_name'],$firstName = $_POST['first_name'],$age = $_POST['age'],$hobby = $_POST['hobby']);
+$selfIntroduction = new SelfIntroduction();
 
 if (! empty($_POST)) {
-    $lastName         = $_POST['last_name'];
-    $firstName        = $_POST['first_name'];
-    $age              = $_POST['age'];
-    $hobby            = $_POST['hobby'];
-    if ($selfIntroduction) {
-        echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
+    $lastName = $_POST['last_name'];
+    $firstName = $_POST['first_name'];
+    $age  = $_POST['age'];
+    $hobby = $_POST['hobby'];
+    if (isset($selfIntroduction)) {
+        echo '私の名前は'.$lastName = $_POST['last_name'].$firstName = $_POST['first_name'].'年齢は'.$age  = $_POST['age'].'です。';
         echo '<br>';
-        echo '趣味は'. $selfIntroduction->getHobby().'です。';
+        echo '趣味は'. $hobby = $_POST['hobby'].'です。';
     }
 }
 
@@ -84,4 +89,5 @@ if (! empty($_POST)) {
     </section>
 </body>
 </html>
+
 
