@@ -15,12 +15,17 @@ $createAgeGroup = function () {
 
 class SelfIntroduction
 {
-    private string $lastName;
-    private string $firstName;
-    private int $age;
-    private string $hobby;
+    private $lastName;
+    private $firstName;
+    private $age;
+    private $hobby;
 
-    public function __construct($lastName,$firstName,$age,$hobby){
+    public function __construct(
+        string $lastName,
+        string $firstName,
+        int $age,
+        string $hobby,
+    ) {
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
         $this->age          = $age;
@@ -54,7 +59,6 @@ if (! empty($_POST)) {
         echo '趣味は'. $selfIntroduction->getHobby().'です。';
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -64,7 +68,7 @@ if (! empty($_POST)) {
 </head>
 <body>
     <section>
-    <form action='./debug02.php' method="post">
+    <form action='./lesson2.php' method="post">
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>
