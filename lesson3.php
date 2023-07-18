@@ -9,9 +9,9 @@
 // 3回目の勝利です。
 // $_SESSIONの挙動やswitch文については調べてみてください。
 session_start();
-
-if (! empty($_SESSION['result'])) {
-    // $_SESSION['result'] += +1 ;
+// $_SESSION=[];
+if (! isset($_SESSION['result'])) {
+    $_SESSION['result'] = 0;
 }
 
 class Player
@@ -110,14 +110,14 @@ class Battle
         if ($this->first === 'パー' && $this->second === 'チョキ') {
             return '負け';
         }
+        return '';
     }
 
-    public function countVictories()
+    private function countVictories()
     {
         if ($this->judge() === '勝ち') {
           $_SESSION['result'] += 1 ;
         }
-        return $_SESSION['result'];
     }
 
     public function getVitories()
@@ -131,6 +131,7 @@ class Battle
     }
 }
 
+
 if (! empty($_POST)) {
     $me    = new Me($_POST['last_name'], $_POST['first_name'], $_POST['choice'], $_POST['choice']);
     $enemy = new Enemy();
@@ -141,8 +142,9 @@ if (! empty($_POST)) {
     $battle = new Battle($me, $enemy);
     echo '勝敗は'.$battle->showResult().'です。';
     if ($battle->showResult() === '勝ち') {
+        $_SESSION['result'] += 1;
         echo '<br>';
-        echo $battle->countVictories().'回目の勝利です。';
+        echo $battle->getVitories().'回目の勝利です。';
     }
 }
 ?>

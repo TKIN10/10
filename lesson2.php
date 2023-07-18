@@ -48,17 +48,16 @@ class SelfIntroduction
     }
 }
 
-$selfIntroduction = new SelfIntroduction();
-
 if (! empty($_POST)) {
-    $lastName = $_POST['last_name'];
-    $firstName = $_POST['first_name'];
-    $age  = $_POST['age'];
-    $hobby = $_POST['hobby'];
+    $lastName         = $_POST['last_name'];
+    $firstName        = $_POST['first_name'];
+    $age              = $_POST['age'];
+    $hobby            = $_POST['hobby'];
+    $selfIntroduction = new SelfIntroduction($lastName,$firstName,$age,$hobby);
     if (isset($selfIntroduction)) {
-        echo '私の名前は'.$lastName = $_POST['last_name'].$firstName = $_POST['first_name'].'年齢は'.$age  = $_POST['age'].'です。';
+        echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
         echo '<br>';
-        echo '趣味は'. $hobby = $_POST['hobby'].'です。';
+        echo '趣味は'. $selfIntroduction->getHobby().'です。';
     }
 }
 
@@ -72,7 +71,7 @@ if (! empty($_POST)) {
 </head>
 <body>
     <section>
-    <form action='./lesson2.php' method="post">
+    <form action='./lesson2.php' method="POST">
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>
@@ -89,5 +88,3 @@ if (! empty($_POST)) {
     </section>
 </body>
 </html>
-
-
